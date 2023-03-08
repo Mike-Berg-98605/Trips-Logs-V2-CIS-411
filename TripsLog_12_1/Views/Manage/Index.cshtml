@@ -1,0 +1,70 @@
+﻿@model ManageViewModel
+@{
+    ViewBag.Title = "Manage Trip";
+    ViewBag.SubHeader = "Manage Destinations Accomodations, and Activities";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Add">
+    <div class="container col-md-5 float-left">
+        <h2>Add</h2>
+        <div class="border">
+        <div class="form-group m-3">
+            <label asp-for="Destination.Name">Destination</label>
+            <input asp-for="Destination.Name" class="form-control">
+        </div>
+        <div class="form-group border-top m-3">
+            <label asp-for="Accomodation.Name">Accomodation Name</label>
+            <input asp-for="Accomodation.Name" class="form-control">
+        </div>
+        <div class="form-group m-3">
+            <label asp-for="Accomodation.Phone">Accomodation Phone</label>
+            <input asp-for="Accomodation.Phone" class="form-control">
+        </div>
+        <div class="form-group m-3">
+            <label asp-for="Accomodation.Email">Accomodation Email</label>
+            <input asp-for="Accomodation.Email" class="form-control">
+        </div>
+        <div class="form-group border-top m-3">
+            <label asp-for="Activity.Name">Activity</label>
+            <input asp-for="Activity.Name" class="form-control">
+        </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2">Add</button>
+        </div>
+    </div>   
+</form>
+
+<form asp-action="Delete">
+    <div class="container col-md-5 float-right">
+        <h2>Delete</h2>
+        <div class="border">
+        <div class="form-group m-3">
+            <label asp-for="Destination.Name">Destination</label>
+            <select asp-for="Destination.DestinationId" class="form-control"
+                    asp-items="@(new SelectList(Model.Destinations, "DestinationId", "Name"))">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="form-group m-3">
+            <label asp-for="Accomodation.Name">Accomodation</label>
+            <select asp-for="Accomodation.AccomodationId" class="form-control"
+                    asp-items="@(new SelectList(Model.Accomodations, "AccomodationId", "Name"))">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="form-group m-3">
+            <label asp-for="Activity.Name">Activity</label>
+            <select asp-for="Activity.ActivityId" class="form-control"
+                    asp-items="@(new SelectList(Model.Activities, "ActivityId", "Name"))">
+                <option value="0"></option>
+            </select>
+        </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2">Delete</button>
+        </div>
+    </div>
+</form>
+
